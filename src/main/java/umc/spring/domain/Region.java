@@ -6,11 +6,10 @@ import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.enums.SocialType;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -23,4 +22,7 @@ public class Region extends BaseEntity {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Store> stores;
 }
